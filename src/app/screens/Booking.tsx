@@ -318,16 +318,16 @@ export default function Booking() {
 
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50">
 
       {/* HEADER */}
-      <div className="bg-blue-600 text-white p-6">
+      <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white p-8 rounded-b-3xl shadow-lg">
 
         <button
           onClick={() =>
             navigate(-1)
           }
-          className="p-2 hover:bg-blue-500 rounded-full transition-colors mb-4"
+          className="p-2 hover:bg-white/20 rounded-full transition-colors mb-4"
         >
 
           <ArrowLeft className="w-5 h-5" />
@@ -335,7 +335,7 @@ export default function Booking() {
         </button>
 
 
-        <h1 className="text-2xl mb-1">
+        <h1 className="fancy-heading text-4xl mb-2">
 
           Book Service
 
@@ -354,13 +354,12 @@ export default function Booking() {
       <div className="p-6 -mt-4">
 
         {/* CREATOR INFO */}
-        <Card className="border-gray-200 shadow-sm mb-6">
-
+        <Card className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border-white/50 mb-6">
           <CardContent className="p-4">
 
             <div className="flex gap-4">
 
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center text-white text-xl shrink-0">
+              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 rounded-2xl">
 
                 {creator.name?.charAt(0)}
 
@@ -471,7 +470,7 @@ export default function Booking() {
                     }
                     className={`p-3 rounded-lg border transition-colors ${
                       time === slot
-                        ? "bg-blue-600 text-white border-blue-600"
+                       ? "bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white border-transparent"
                         : "bg-white text-gray-700 border-gray-200 hover:border-blue-300"
                     }`}
                   >
@@ -603,7 +602,7 @@ export default function Booking() {
 
                 </span>
 
-                <span className="text-xl text-blue-600">
+                <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">
 
                   ₹
                   {creator.price?.toLocaleString()}
@@ -623,9 +622,8 @@ export default function Booking() {
         <Button
           onClick={handleBooking}
           disabled={bookingLoading}
-          className="w-full bg-blue-600 hover:bg-blue-700 h-12 text-lg"
-        >
-
+          className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 text-white h-14 text-lg rounded-full shadow-lg"
+>
           {bookingLoading
             ? "Booking..."
             : "Confirm Booking"}

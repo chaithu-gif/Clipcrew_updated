@@ -83,23 +83,53 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col p-6">
-      <div className="flex items-center gap-3 mb-8 pt-4">
-        <div className="bg-blue-600 p-2 rounded-lg">
-          <Camera className="w-6 h-6 text-white" />
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 p-6">
+      <div className="max-w-6xl mx-auto w-full mb-10">
+  <div className="bg-white/80 backdrop-blur-md rounded-full px-8 py-4 shadow-lg flex items-center justify-between">
 
-        <h1 className="text-2xl text-gray-900">Clip Crew</h1>
+    <div
+      onClick={() => navigate("/")}
+      className="flex items-center gap-3 cursor-pointer"
+    >
+      <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 p-2 rounded-xl">
+        <Camera className="w-6 h-6 text-white" />
       </div>
 
-      <div className="flex-1 flex items-center justify-center pb-8">
-        <Card className="w-full max-w-md border-gray-200">
-          <CardHeader>
-            <CardTitle>Create Account</CardTitle>
+      <h1 className="fancy-heading text-3xl text-gray-900">
+        Clip Crew
+      </h1>
+    </div>
 
-            <CardDescription>
-              Join as a customer or creator
-            </CardDescription>
+    <div className="flex items-center gap-6">
+      <button onClick={() => navigate("/")} className="text-gray-600 hover:text-purple-600">
+        Home
+      </button>
+
+      <button onClick={() => navigate("/about")} className="text-gray-600 hover:text-purple-600">
+        About
+      </button>
+
+      <button onClick={() => navigate("/contact")} className="text-gray-600 hover:text-purple-600">
+        Contact
+      </button>
+    </div>
+
+  </div>
+</div>
+
+      <div className="flex-1 flex items-center justify-center pb-8">
+        <Card className="w-full max-w-lg bg-white/80 backdrop-blur-md border border-white/50 rounded-[32px] shadow-xl">
+          <CardHeader>
+            <CardTitle className="fancy-heading text-4xl text-center">
+  Create{" "}
+  <span className="bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">
+    Account
+  </span>
+</CardTitle>
+
+            <CardDescription className="text-center text-gray-500">
+  Join the Clip Crew community
+</CardDescription>
           </CardHeader>
 
           <CardContent>
@@ -118,7 +148,7 @@ export default function Register() {
                     placeholder="Enter your name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="pl-10"
+                    className="pl-10 rounded-2xl border border-gray-200 bg-white/80 h-12 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     required
                   />
                 </div>
@@ -137,7 +167,7 @@ export default function Register() {
                     placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10"
+                    className="pl-10 rounded-2xl border border-gray-200 bg-white/80 h-12 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     required
                   />
                 </div>
@@ -156,51 +186,50 @@ export default function Register() {
                     placeholder="Create a password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10"
+                    className="pl-10 rounded-2xl border border-gray-200 bg-white/80 h-12 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     required
                   />
                 </div>
               </div>
 
               {/* ROLE */}
-              <div className="space-y-2">
+              <div className="mt-2">
                 <Label>I am a</Label>
+                
 
-                <RadioGroup value={role} onValueChange={setRole}>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem
-                      value="customer"
-                      id="customer"
-                    />
+                <div className="grid grid-cols-2 gap-4">
+  <button
+    type="button"
+    onClick={() => setRole("customer")}
+    className={`p-4 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-md ${
+      role === "customer"
+        ? "bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white shadow-lg"
+        : "bg-white border-gray-200"
+    }`}
+  >
+    <h3 className="font-semibold">Customer</h3>
+    <p className="text-sm">Looking to hire</p>
+  </button>
 
-                    <Label
-                      htmlFor="customer"
-                      className="cursor-pointer"
-                    >
-                      Customer (Looking to hire)
-                    </Label>
-                  </div>
-
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem
-                      value="creator"
-                      id="creator"
-                    />
-
-                    <Label
-                      htmlFor="creator"
-                      className="cursor-pointer"
-                    >
-                      Creator (Offering services)
-                    </Label>
-                  </div>
-                </RadioGroup>
+  <button
+    type="button"
+    onClick={() => setRole("creator")}
+    className={`p-4 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-md ${
+      role === "creator"
+        ? "bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white shadow-lg"
+        : "bg-white border-gray-200"
+    }`}
+  >
+    <h3 className="font-semibold">Creator</h3>
+    <p className="text-sm">Offering services</p>
+  </button>
+</div>
               </div>
 
               {/* BUTTON */}
               <Button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700"
+                className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 text-white rounded-full h-12 shadow-lg hover:shadow-xl transition-all duration-300"
                 disabled={loading}
               >
                 {loading ? "Creating Account..." : "Register"}
@@ -213,7 +242,7 @@ export default function Register() {
                 <button
                   type="button"
                   onClick={() => navigate("/login")}
-                  className="text-blue-600 hover:underline"
+                  className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent font-semibold hover:opacity-80"
                 >
                   Login
                 </button>

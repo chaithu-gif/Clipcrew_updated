@@ -233,7 +233,7 @@ export default function Categories() {
   if (loading) {
 
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white p-6 pb-6">
 
         <p className="text-gray-600">
 
@@ -247,80 +247,63 @@ export default function Categories() {
 
 
   return (
-    <div className="min-h-screen bg-white">
+    
+  <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 p-6">
 
       {/* HEADER */}
-      <div className="bg-blue-600 text-white p-6 pb-8">
-
-        <div className="flex items-center justify-between mb-6">
-
-          <div className="flex items-center gap-3">
-
-            <Camera className="w-6 h-6" />
-
-            <h1 className="text-2xl">
-
-              Clip Crew
-
-            </h1>
-
-          </div>
+     
 
 
-          {/* DASHBOARD ICON */}
-          <button
-            onClick={() => {
+        <div className="max-w-7xl mx-auto mb-6">
+  <div className="bg-white/80 backdrop-blur-md rounded-full px-8 py-4 shadow-lg flex items-center justify-between">
 
-              if (
-                role === "creator"
-              ) {
+    <div className="flex items-center gap-3">
+      <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 p-2 rounded-xl">
+        <Camera className="w-6 h-6 text-white" />
+      </div>
 
-                navigate(
-                  "/dashboard"
-                );
+      <h1 className="fancy-heading text-3xl text-gray-900">
+        Clip Crew
+      </h1>
+    </div>
 
-              } else {
+    <button
+      onClick={() => {
+        if (role === "creator") {
+          navigate("/dashboard");
+        } else {
+          navigate("/customer-dashboard");
+        }
+      }}
+      className="p-2 rounded-full hover:bg-purple-100 transition"
+    >
+      <User className="w-6 h-6 text-gray-700" />
+    </button>
 
-                navigate(
-                  "/customer-dashboard"
-                );
-
-              }
-
-            }}
-            className="p-2 hover:bg-blue-500 rounded-full transition-colors"
-          >
-
-            <User className="w-6 h-6" />
-
-          </button>
-
-        </div>
+  </div>
+</div>
+ 
 
 
         {/* SEARCH */}
-        <div className="relative">
+        <div className="max-w-7xl mx-auto mb-6">
+  <div className="relative">
+    <Search className="absolute left-4 top-4 h-5 w-5 text-gray-400" />
 
-          <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+    <Input
+      placeholder="Search creators..."
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+      className="pl-12 bg-white/90 text-black rounded-2xl border-0 shadow-md h-14"
+    />
+  </div>
+</div>
 
-          <Input
-            placeholder="Search creators..."
-            value={searchTerm}
-            onChange={(e) =>
-              setSearchTerm(
-                e.target.value
-              )
-            }
-            className="pl-10 bg-white text-black"
-          />
-
-        </div>
-
-      </div>
+      
 
 
       {/* CONTENT */}
-      <div className="p-6 -mt-4">
+      <div className="max-w-7xl mx-auto">
 
         {/* FILTERS */}
         <div className="flex items-center justify-between mb-6">
@@ -341,7 +324,7 @@ export default function Categories() {
                   className={`px-4 py-2 rounded-full whitespace-nowrap transition-colors ${
                     selectedCategory ===
                     category
-                      ? "bg-blue-600 text-white"
+                      ? "bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white shadow-md"
                       : "bg-gray-100 text-gray-700"
                   }`}
                 >
@@ -367,7 +350,7 @@ export default function Categories() {
               className={`p-2 rounded-lg ${
                 viewMode ===
                 "grid"
-                  ? "bg-blue-600 text-white"
+                  ? "bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white"
                   : "bg-gray-100 text-gray-700"
               }`}
             >
@@ -386,7 +369,7 @@ export default function Categories() {
               className={`p-2 rounded-lg ${
                 viewMode ===
                 "list"
-                  ? "bg-blue-600 text-white"
+                  ?  "bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white"
                   : "bg-gray-100 text-gray-700"
               }`}
             >
@@ -432,7 +415,7 @@ export default function Categories() {
 
                 <Card
                   key={creator.id}
-                  className="border-gray-200 hover:shadow-md transition-shadow cursor-pointer"
+                  className="bg-white/80 backdrop-blur-sm border border-white/50 rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                   onClick={() =>
                     navigate(
                       `/creator/${creator.id}`
@@ -445,7 +428,7 @@ export default function Categories() {
                     <div className="flex gap-4">
 
                       {/* IMAGE */}
-                      <div className="w-20 h-20 rounded-lg overflow-hidden bg-gray-100 shrink-0">
+                      <div className="w-20 h-20 rounded-2xl overflow-hidden bg-gray-100 shrink-0">
 
                         {creator.image ? (
 
@@ -461,7 +444,7 @@ export default function Categories() {
 
                         ) : (
 
-                          <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white text-2xl">
+                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white text-2xl font-bold">
 
                             {creator.name?.charAt(
                               0
@@ -498,7 +481,7 @@ export default function Categories() {
                           </div>
 
 
-                          <Badge className="bg-blue-100 text-blue-700">
+                          <Badge className="bg-purple-100 text-purple-700">
 
                             {creator.category}
 
@@ -547,7 +530,7 @@ export default function Categories() {
                         {/* PRICE */}
                         <div className="flex justify-between items-center">
 
-                          <span className="text-blue-600 text-lg">
+                          <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent text-xl font-bold">
 
                             ₹
                             {creator.price?.toLocaleString()}
@@ -556,9 +539,9 @@ export default function Categories() {
 
 
                           <Button
-                            size="sm"
-                            className="bg-blue-600 hover:bg-blue-700"
-                          >
+  size="sm"
+  className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 text-white rounded-full"
+>
 
                             View Profile
 

@@ -142,10 +142,10 @@ export default function CreatorProfile() {
 
 
   return (
-    <div className="min-h-screen bg-white pb-24">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 pb-24">
 
       {/* HEADER */}
-      <div className="bg-blue-600 text-white p-6">
+      <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white p-8 rounded-b-3xl shadow-lg">
 
         <button
           onClick={() =>
@@ -160,9 +160,15 @@ export default function CreatorProfile() {
 
 
         <div className="flex items-start gap-4">
+          <button
+  onClick={() => navigate(-1)}
+  className="absolute top-6 left-6 p-2 rounded-full bg-white/20 hover:bg-white/30 transition"
+>
+  <ArrowLeft className="w-5 h-5 text-white" />
+</button>
 
           {/* PROFILE IMAGE */}
-          <div className="w-24 h-24 rounded-lg overflow-hidden bg-white/20 shrink-0">
+          <div className="w-24 h-24 rounded-3xl overflow-hidden bg-white/20 shrink-0 shadow-lg border-2 border-white/30">
 
             {creator.image ? (
 
@@ -250,7 +256,7 @@ export default function CreatorProfile() {
       <div className="p-6 space-y-6">
 
         {/* LOCATION & PRICE */}
-        <Card className="border-gray-200">
+        <Card className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border-white/50">
 
           <CardContent className="p-4">
 
@@ -280,7 +286,7 @@ export default function CreatorProfile() {
 
                 </div>
 
-                <div className="text-2xl text-blue-600">
+                <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">
 
                   ₹
                   {creator.price?.toLocaleString() || 0}
@@ -354,7 +360,7 @@ export default function CreatorProfile() {
 
               <TabsTrigger
                 value="images"
-                className="flex-1"
+                className="flex-1 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:via-pink-500 data-[state=active]:to-orange-400 data-[state=active]:text-white"
               >
 
                 Images (
@@ -366,7 +372,7 @@ export default function CreatorProfile() {
 
               <TabsTrigger
                 value="videos"
-                className="flex-1"
+                className="flex-1 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:via-pink-500 data-[state=active]:to-orange-400 data-[state=active]:text-white"
               >
 
                 Videos (
@@ -411,14 +417,20 @@ export default function CreatorProfile() {
 
 
               {allMedia.length === 0 && (
+  <Card className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border-white/50">
+    <CardContent className="p-10 text-center">
+      <div className="text-5xl mb-4">📸</div>
 
-                <p className="text-center text-gray-500 py-8">
+      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+        Portfolio Coming Soon
+      </h3>
 
-                  No portfolio items yet
-
-                </p>
-
-              )}
+      <p className="text-gray-500">
+        This creator has not uploaded portfolio items yet.
+      </p>
+    </CardContent>
+  </Card>
+)}
 
             </TabsContent>
 
@@ -505,7 +517,7 @@ export default function CreatorProfile() {
           {/* CHAT */}
           <Button
             variant="outline"
-            className="flex-1 border-blue-600 text-blue-600 hover:bg-blue-50"
+            className="flex-1 rounded-full border-purple-500 text-purple-600 hover:bg-purple-50"
             onClick={() =>
               alert(
                 "Chat feature coming soon!"
@@ -522,7 +534,7 @@ export default function CreatorProfile() {
 
           {/* BOOK */}
           <Button
-            className="flex-1 bg-blue-600 hover:bg-blue-700"
+            className="flex-1 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 text-white rounded-full"
             onClick={() =>
               navigate(
                 `/booking/${creator.id}`

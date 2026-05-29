@@ -133,40 +133,65 @@ export default function Login() {
 
 
   return (
-    <div className="min-h-screen bg-white flex flex-col p-6">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 flex flex-col p-6">
 
-      {/* HEADER */}
-      <div className="flex items-center gap-3 mb-8 pt-4">
+      <div className="max-w-6xl mx-auto w-full mb-10">
+  <div className="bg-white/80 backdrop-blur-md rounded-full px-8 py-4 shadow-lg flex items-center justify-between">
 
-        <div className="bg-blue-600 p-2 rounded-lg">
-
-          <Camera className="w-6 h-6 text-white" />
-
-        </div>
-
-        <h1 className="text-2xl text-gray-900">
-
-          Clip Crew
-
-        </h1>
-
+    <div
+      onClick={() => navigate("/")}
+      className="flex items-center gap-3 cursor-pointer"
+    >
+      <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 p-2 rounded-xl">
+        <Camera className="w-6 h-6 text-white" />
       </div>
+
+      <h1 className="fancy-heading text-3xl text-gray-900">
+        Clip Crew
+      </h1>
+    </div>
+
+    <button
+      onClick={() => navigate("/")}
+      className="text-gray-600 hover:text-purple-600 font-medium transition"
+    >
+      Home
+    </button>
+    <button
+    onClick={() => navigate("/about")}
+    className="text-gray-600 hover:text-purple-600 transition"
+  >
+    About
+  </button>
+
+  <button
+    onClick={() => navigate("/contact")}
+    className="text-gray-600 hover:text-purple-600 transition"
+  >
+    Contact
+  </button>
+
+  </div>
+</div>
 
 
       {/* LOGIN CARD */}
       <div className="flex-1 flex items-center justify-center">
 
-        <Card className="w-full max-w-md border-gray-200">
+        <Card className="w-full max-w-lg bg-white/80 backdrop-blur-md border border-white/50 rounded-[32px] shadow-xl">
 
           <CardHeader>
 
-            <CardTitle>
-              Welcome Back
-            </CardTitle>
+            <CardTitle className="fancy-heading text-4xl text-center">
+  Welcome{" "}
+  <span className="bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">
+    Back
+  </span>
+</CardTitle>
 
-            <CardDescription>
-              Login to continue
-            </CardDescription>
+            <CardDescription className="text-center text-gray-500 text-base">
+  Login to continue your creative journey
+</CardDescription>
 
           </CardHeader>
 
@@ -182,11 +207,11 @@ export default function Login() {
                     "customer"
                   )
                 }
-                className={`p-3 rounded-lg border transition-colors ${
+                className={`p-3 rounded-2xl font-medium transition-all duration-300 ${
                   role ===
                   "customer"
-                    ? "bg-blue-600 text-white border-blue-600"
-                    : "bg-white text-gray-700 border-gray-200"
+                    ? "bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white shadow-md"
+                    : "bg-white/70 text-gray-700 border border-gray-200 hover:bg-gray-50"
                 }`}
               >
 
@@ -202,12 +227,11 @@ export default function Login() {
                     "creator"
                   )
                 }
-                className={`p-3 rounded-lg border transition-colors ${
-                  role ===
-                  "creator"
-                    ? "bg-blue-600 text-white border-blue-600"
-                    : "bg-white text-gray-700 border-gray-200"
-                }`}
+                className={`p-3 rounded-2xl font-medium transition-all duration-300 ${
+  role === "creator"
+    ? "bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white shadow-md"
+    : "bg-white/70 text-gray-700 border border-gray-200 hover:bg-gray-50"
+}`}
               >
 
                 Creator
@@ -243,7 +267,7 @@ export default function Login() {
                         e.target.value
                       )
                     }
-                    className="pl-10"
+                    className="pl-10 rounded-2xl border border-gray-200 bg-white/80 h-12 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     required
                   />
 
@@ -273,7 +297,7 @@ export default function Login() {
                         e.target.value
                       )
                     }
-                    className="pl-10"
+                    className="pl-10 rounded-2xl border border-gray-200 bg-white/80 h-12 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     required
                   />
 
@@ -285,7 +309,7 @@ export default function Login() {
               {/* BUTTON */}
               <Button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700"
+                className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 text-white rounded-full h-12 shadow-lg hover:shadow-xl transition-all duration-300"
                 disabled={loading}
               >
 
@@ -302,23 +326,17 @@ export default function Login() {
 
 
               {/* REGISTER */}
-              <div className="text-center text-sm text-gray-600">
+              <div className="text-center text-sm text-gray-600 pt-2">
+  New to Clip Crew?
 
-                Don't have an account?{" "}
-
-                <button
-                  type="button"
-                  onClick={() =>
-                    navigate("/register")
-                  }
-                  className="text-blue-600 hover:underline"
-                >
-
-                  Register
-
-                </button>
-
-              </div>
+  <button
+    type="button"
+    onClick={() => navigate("/register")}
+    className="ml-2 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent font-semibold"
+  >
+    Create Account
+  </button>
+</div>
 
             </form>
 

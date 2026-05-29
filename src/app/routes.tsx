@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import Splash from "./screens/Splash";
+import Home from "./screens/Home";
 
 import Login from "./screens/Login";
 
@@ -22,13 +22,17 @@ import PortfolioUpload from "./screens/PortfolioUpload";
 
 import CustomerDashboard from "./screens/CustomerDashboard";
 
+import AboutUs from "./screens/AboutUs";
+
+import ContactUs from "./screens/ContactUs";
+
 
 export const router =
   createBrowserRouter([
 
     {
       path: "/",
-      element: <Splash />,
+      element: <Home />,
     },
 
     {
@@ -87,6 +91,16 @@ export const router =
         "/portfolio-upload",
       element:
         <PortfolioUpload />,
+    },
+
+    {
+      path: "/about",
+      element: <AboutUs />,
+    },
+
+    {
+      path: "/contact",
+      element: <ContactUs />,
     },
 
   ]);
